@@ -1,28 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <title>Title</title>
-</head>
-<body class="bg-biru ">
-    <div class="navbar sticky bg-white z-10 top-0">
-        <div class="container">
-            <h4 class="nama-site">
-                <a href="/">Luthfi MC's Project Site</a>
-            </h4>
-            <ul class="nav-button">
-                <li class="but-padding">
-                    <a>Blogs</a>
-                </li>
-                <li class="but-padding">
-                    <a>Projects</a>
-                </li>
-                <li class="but-padding">
-                    <a>About</a>
-                </li>
-            </ul>
+{% extends 'base.html' %}
+{% block title %}Home - Luthfi MC{% endblock %}
+
+{% block content %}
+<div class="flex flex-col-reverse md:flex-row items-center justify-between md:justify-start w-fit h-fit mx-auto px-6 md:px-16 py-6 gap-4 md:gap-8">
+  <!-- 🔸 Kontainer Konten -->
+    <div class="relative z-10 flex flex-col md:flex-row-reverse items-center justify-center md:justify-start min-w-fit min-h-fit mx-auto py-20 md:py-20 gap-5 md:gap-x-24">
+        <!-- 🔸 Gambar Profil -->
+        <div class="shrink-0">
+            <img src="https://64.media.tumblr.com/e46893e049cf50c96879daec549efe13/c24b1f831bcc921f-0f/s540x810/75d97a9eec1fc54832892a2cc44e3fc9e7808e37.gifv"
+            alt="Luthfi MC"
+            class="w-40 h-40 md:w-60 md:h-60 object-cover rounded-full shadow-lg aspect-square border-5 border-white" />
+        </div>
+        <!-- 🔸 Teks -->
+        <div class="text-left max-w-xl text-white">
+            <p class="text-xl">Hi!</p>
+            <p class="text-xl">My name is</p>
+            <p class="text-4xl md:text-6xl font-extrabold underline mb-4"> LUTHFI MC.</p>
+            <p class="text-lg font-semibold md:text-lg md:tracking-wider mt-4 text-gray-400 leading-relaxed">
+            bocah medioker yang ga pinter-pinter amat<br>
+            tapi masih berusaha sebisa mungkin.<br>
+            2KB01, S1 Sistem Komputer, Univ. Gunadarma</p>
+            <!-- Sosmed Icon Placeholder -->
+            <div class="flex justify-center md:justify-start gap-4 mt-4">
+                <a href="https://github.com/LuthfiMC269/"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" alt="GitHub" class="w-5 h-5"></a>
+                <a href="https://www.instagram.com/luthfi_269/"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-white-icon.png" alt="Instagram" class="w-5 h-5"></a>
+                <a href="https://www.facebook.com/luthfiMC269"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png" alt="Facebook" class="w-5 h-5"></a>
+            </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}

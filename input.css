@@ -1,18 +1,27 @@
 @import "tailwindcss";
-@import"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind utilities;
 
+  @keyframes glow-fade {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
 
+  .animate-glow {
+    animation: glow-fade 4s ease-in-out infinite;
+  }
 @theme{
     --color-biru: rgb(7,18,36);
+    --color-copy: rgb(50,50,50,62%)
+}
 
-}
-* {
-  font-family:Poppins,sans-serif
-}
 .nama-site {
     font-size: 40px;
     font-weight: bold;
+}
+.front-text{
+    font-size:64px;
+    font-weight: bolder;
 }
 .container{
     width: 100%;
@@ -33,6 +42,68 @@
     padding: 12px 0;
 }
 .but-padding{
-    padding: 12px;
+    padding: 10px;
+}
+.front-text{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
 }
 
+@keyframes slide-in-left-bounce {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(2%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(-1%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right-bounce {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-2%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(1%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left-bounce 1.8s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right-bounce 1.9s ease forwards;
+}
+
+@keyframes slide-down-fade {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-navbar-in {
+    animation: slide-down-fade 1.5s ease-out 1.6s forwards;
+    opacity: 0;
+}
