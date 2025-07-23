@@ -2,9 +2,9 @@
 {% block title %}Home - Luthfi MC{% endblock %}
 
 {% block content %}
-<div class="flex flex-col-reverse md:flex-row items-center justify-between md:justify-start w-fit h-fit mx-auto px-6 md:px-16 py-6 gap-4 md:gap-8">
+<div id="home" class="flex flex-col items-center justify-between md:justify-start w-fit h-fit mx-auto px-6 md:px-16 py-6 gap-4 md:gap-8">
   <!-- 🔸 Kontainer Konten -->
-    <div class="relative z-10 flex flex-col md:flex-row-reverse items-center justify-center md:justify-start min-w-fit min-h-fit mx-auto py-20 md:py-20 gap-5 md:gap-x-24">
+    <div class="relative z-10 flex flex-col md:flex-row-reverse md:flex--reverse items-center justify-center md:justify-start min-w-fit md:min-h-[calc(80vh-6rem)] mx-auto py-20 md:py-20 gap-5 md:gap-x-24">
         <!-- 🔸 Gambar Profil -->
         <div class="shrink-0">
             <img src="https://64.media.tumblr.com/e46893e049cf50c96879daec549efe13/c24b1f831bcc921f-0f/s540x810/75d97a9eec1fc54832892a2cc44e3fc9e7808e37.gifv"
@@ -13,20 +13,186 @@
         </div>
         <!-- 🔸 Teks -->
         <div class="text-left max-w-xl text-white">
-            <p class="text-xl">Hi!</p>
+            <p class="text-xl">Hi!<span class="hand">👋</span></p>
             <p class="text-xl">My name is</p>
-            <p class="text-4xl md:text-6xl font-extrabold underline mb-4"> LUTHFI MC.</p>
+            <p class="text-4xl md:text-6xl font-extrabold underline mb-2"> LUTHFI MC.</p>
+            <p class="text-2xl md:text-3xl font-extrabold mb-4"> Desktop App & Back-End Developer</p>
             <p class="text-lg font-semibold md:text-lg md:tracking-wider mt-4 text-gray-400 leading-relaxed">
             bocah medioker yang ga pinter-pinter amat<br>
             tapi masih berusaha sebisa mungkin.<br>
             2KB01, S1 Sistem Komputer, Univ. Gunadarma</p>
             <!-- Sosmed Icon Placeholder -->
-            <div class="flex justify-center md:justify-start gap-4 mt-4">
-                <a href="https://github.com/LuthfiMC269/"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" alt="GitHub" class="w-5 h-5"></a>
-                <a href="https://www.instagram.com/luthfi_269/"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-white-icon.png" alt="Instagram" class="w-5 h-5"></a>
-                <a href="https://www.facebook.com/luthfiMC269"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png" alt="Facebook" class="w-5 h-5"></a>
+            <div class="flex justify-center md:justify-start gap-4 mt-2">
+                <a href="https://github.com/LuthfiMC269/"><i class="bi bi-github" style="font-size:1.3rem"></i></a>
+                <a href="https://www.instagram.com/luthfi_269/"><i class="bi bi-instagram" style="font-size:1.3rem"></i></a>
+                <a href="https://www.facebook.com/luthfiMC269"><i class="bi bi-facebook" style="font-size:1.3rem"></i></a>
             </div>
         </div>
     </div>
+    {% if projects %}
+        <section id="portfolio" class="py-20 max-w-5xl mx-auto px-6 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-center">Portfolio</h2>
+            <p class="text-gray-400 mb-8 text-center">Beberapa projek di repositori ku:</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="project-grid">
+                {% for repo in projects %}
+                <div class="bg-white/5 border border-white/10 p-4 rounded-lg hover:bg-white/10 transition duration-200 {% if loop.index > 6 %}hidden more-project{% endif %}">
+                    <div class="max-w-300px max-h-1/2 mb-4">
+                        <img src="{{ repo.image }}" alt="{{ repo.name }} image" class="max-w-full max-h-full mb-2 rounded z-2">
+                    </div>
+                    <h3 class="font-semibold text-white text-lg mb-1">{{ repo.name }}</h3>
+                    <p class="text-sm text-gray-300 mb-2 line-clamp-2">{{ repo.description or "No description." }}</p>
+                    <a href="{{ repo.html_url }}" target="_blank" class="text-sm  underline inline-flex items-center gap-1">
+                    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" alt="GitHub" class="w-4 h-4" />
+                        {{ repo.full_name }}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-8">
+                <button onclick="toggleProjects()" id="viewMoreBtn" class="text-white border border-white/20 px-4 py-2 rounded hover:bg-white/10 transition">View More</button>
+            </div>
+        </section>
+    {% endif %}
+    <section id="tech-stack" class="py-20 max-w-5xl mx-auto text-white justify-center">
+        <h2 class="text-3xl font-bold mb-4 text-center">💻️ My Tech Stacks</h2>
+        <div class="item">
+            <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Badge">
+            <img src="https://img.shields.io/badge/Google%20Colab-119ee9?style=for-the-badge&logo=googlecolab&logoColor=feb437" alt="Badge">
+            <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="Badge">
+            <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/DiscordPy-4c61e6?style=for-the-badge&logo=discord&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/Bootstrap-7e4ce6?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/Linux%20Mint-52e941?style=for-the-badge&logo=linuxmint&logoColor=white" alt="Badge">
+            <img src="https://img.shields.io/badge/Rest%20API-189ce2?style=for-the-badge" alt="Badge">
+            <img src="https://img.shields.io/badge/Fesnuk-white?style=for-the-badge&logo=facebook&logoColor=3563fc" alt="Badge">
+        </div>
+    </section>
+    <section id="about" class="py-20 max-w-5xl mx-auto text-white">
+        <h2 class="text-3xl font-bold mb-4 text-center">🙋‍♂️ About Me</h2>
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/3 flex justify-center">
+                <img class="w-40 h-40 md:w-70 md:h-70 object-cover rounded-full shadow-lg aspect-square border-5 border-white" src="/static/PP.JPG">
+            </div>
+            <div class="md:w-2/3">
+                <h3 class="text-3xl font-semibold mb-6"> Personal Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8 items-center">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <p class="whitespace-nowrap"><span>Full Name: </span> Luthfi Muhammad Chair</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <i class="bi bi-calendar2-date-fill"></i>
+                            </div>
+                            <p><span>Birth: </span> April 2005</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <i class="bi bi-gender-male"></i>
+                            </div>
+                            <p><span>Gender: </span> Male</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <p class="whitespace-nowrap"><span>Address: </span>Pasar Rebo, Jakarta Timur</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <i class="bi bi-envelope-at-fill"></i>
+                            </div>
+                            <p><span>Email: </span> <a class="underline" href="mailto:LuthfiMC269@pm.me">LuthfiMC269@pm.me</a></p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <i class="bi bi-whatsapp"></i>
+                            </div>
+                            <p><span>Whatsapp: </span> <a class="underline" href="https://wa.me/6285155260305">+62 851-5526-0305</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div clas="mb-6">
+                    <h4 class="text-2xl font-semibold mb-3">Little Introduction</h4>
+                    <p class="leading-relaxed text-gray-300">
+                        Halo! Aku Luthfi, panggil aja π (pi)^^ Saat ini sedang berkuliah di Univ. Gunadarma Prodi S1 Sistem Komputer. Aku bisa menggunakan beberapa bahasa
+                        pemrograman, tapi aku paling nyaman menggunakan python untuk hampir semua projek ku. Aku gak terlalu jago diantara teman-temanku, tapi aku selalu
+                        berusaha semampuku dan dengan sedikit bantuan "vibe-coding" ~ehe. Hobi ku biasanya melakukan Archery, Coding, dan sedikit Scroll fesnuk :v.
+                        Sekian perkenalan ku, kalau ingin berkontak bisa langsung hubungi aku yaa!^^
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-20 max-w-5xl mx-auto text-white">
+        <h2 class="text-3xl font-bold mb-4 text-center">Follow Me!</h2>
+        <div class="flex justify-center gap-4 mt-4 flex-col md:flex-row">
+            <div class="grid grid-cols-2 gap-3 mb-8 items-center">
+                <div class="md:flex md:flex-row md:justify-end space-y-4">
+                        <div class="flex items-start gap-3 md:mr-3">
+                            <div class="pl-2 pr-2 w-fit h-fit rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <a href="https://github.com/LuthfiMC269/"><i class="bi bi-github mr-2" style="font-size:1.7rem"></i></a>
+                                <p>Github</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 md:mr-3">
+                            <div class="pl-2 pr-2 w-fit h-fit rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <a href="https://www.instagram.com/luthfi_269/"><i class="bi bi-instagram mr-2" style="font-size:1.7rem"></i></a>
+                                <p>Instagram</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 md:mr-3">
+                            <div class="pl-2 pr-2 w-fit h-fit rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <a href="https://www.facebook.com/luthfiMC269"><i class="bi bi-facebook mr-2" style="font-size:1.7rem"></i></a>
+                                <p>Fesnuk</p>
+                            </div>
+                        </div>
+                </div>
+                <div class="md:flex md:flex-row space-y-4 md:justify-start">
+                        <div class="flex items-start gap-3 md:mr-3">
+                            <div class="pl-2 pr-2 w-fit h-fit rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <a href="https://www.youtube.com/@LuthfiRandom"><i class="bi bi-youtube mr-2" style="font-size:1.7rem"></i></a>
+                                <p>Youtube</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 md:mr-3">
+                            <div class="pl-2 pr-2 w-fit h-fit rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <a href="https://dc.lmcpsite.my.id"><i class="bi bi-discord mr-2" style="font-size:1.7rem"></i></a>
+                                <p>Discord</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 md:mr-3">
+                            <div class="pl-2 pr-2 w-fit h-fit rounded-full bg-indigo-500/20 flex items-center justify-center">
+                                <a href="https://wa.me/6285155260305"><i class="bi bi-whatsapp mr-2" style="font-size:1.7rem"></i></a>
+                                <p>Whatsapp</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </div>
 {% endblock %}

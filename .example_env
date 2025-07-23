@@ -1,0 +1,4 @@
+#copy file ini, rename ke .env, kemudian isi username dan password untuk akses admin blog page
+USER_NAME=Username123
+PASSWORD=Password123
+GITHUBUSR=Github123
